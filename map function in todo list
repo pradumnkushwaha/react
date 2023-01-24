@@ -1,0 +1,45 @@
+import React,{useState} from 'react';
+
+function Forms() {
+
+    const [val,setval] = useState("");
+    const [inputs, setInputs] = useState([])
+
+    function callinputs(event){
+            setval(event.target.value)
+            //console.log(val)
+            
+    }
+    function clicked(){
+        
+        setInputs((inputs) =>
+        {
+            const updated = [...inputs,val]
+            return updated
+        })
+        setval("")
+        console.log(inputs)
+        
+    }
+
+    
+    return (
+        
+        <div>
+            <input  value ={val} type="Text" onChange={callinputs}></input>
+            <button onClick={clicked}>submit</button>
+            <div>
+           {inputs.map((inputs) =>{
+            
+                   return <h1>{inputs}</h1>
+            
+           })     
+            }
+            </div>
+           
+           
+        </div>
+    )
+}
+
+export default Forms
